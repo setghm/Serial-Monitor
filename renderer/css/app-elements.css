@@ -1,0 +1,312 @@
+
+div#serial-info {
+	width: 100%;
+	height: max-content;
+	padding: 6px 16px;
+	
+	background-color: #212121;
+	font-size: 11pt;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+div#serial-info.shadow {
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+div#app-options {
+	display: flex;
+	align-items: center;
+}
+
+div#app-options > *:nth-child(2) {
+	margin: 0 10px;
+}
+
+div.port-options {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+#device-info {
+	width: 18px;
+	height: 18px;
+	background-color: transparent;
+	background-image: url('../img/information-icon.svg');
+	background-position: center;
+	background-size: contain;
+	opacity: 0.6;
+}
+
+#device-info:hover {
+	opacity: 0.8;
+}
+
+#device-info:active {
+	opacity: 1;
+}
+
+#device-info:disabled {
+	opacity: 0.5;
+}
+
+/*
+#get-ports {
+	width: 18px;
+	height: 18px;
+	background-color: transparent;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg version='1.1' width='1024px' height='1024px' id='svg6' sodipodi:docname='circular arrow.svg' inkscape:version='1.2.2 (732a01da63, 2022-12-09)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs10' /%3E%3Csodipodi:namedview id='namedview8' pagecolor='%23505050' bordercolor='%23eeeeee' borderopacity='1' inkscape:showpageshadow='0' inkscape:pageopacity='0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23505050' showgrid='false' inkscape:zoom='0.56347656' inkscape:cx='511.11265' inkscape:cy='371.79896' inkscape:window-width='1366' inkscape:window-height='706' inkscape:window-x='-8' inkscape:window-y='-8' inkscape:window-maximized='1' inkscape:current-layer='svg6' /%3E%3Cpath fill='%234040ff' d='m 789,217 -50,64 C 845,364 899,498 878,631 846,833 656,971 455,939 253,907 115,717 147,516 162,418 215,332 295,274 365,223 448,199 533,204 h -1 l -70,73 52,49 159,-167 v 0 L 506,0 l -49,52 75,71 v 0 C 430,118 330,148 246,209 149,280 85,384 66,503 c -39,245 130,477 375,515 24,4 47,6 70,6 218,0 410,-159 445,-381 C 982,481 917,318 787,217 Z' id='path2' style='fill:%23ffffff' inkscape:label='path2' /%3E%3C/svg%3E%0A");
+	background-position: center;
+	background-size: contain;
+	opacity: 0.5;
+}
+
+.rotate360 {
+	animation: rotate360 400ms ease;
+}
+
+@keyframes rotate360 {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+#get-ports:hover {
+	opacity: 0.8;
+}
+*/
+#device-disconnect {
+	color: rgba(255, 255, 255, 0.8);
+	padding: 4px 16px;
+	border-radius: 16px;
+}
+
+#app-title {
+	border-radius: 12px;
+	padding: 4px 8px;
+	font-size: 10pt;
+}
+
+#app-title.connected {
+	color: dodgerblue;
+	background-color: rgba(30, 143, 255, 0.2);
+}
+
+#app-title.error {
+	cursor: help;
+	color: rgb(255, 59, 59);
+	background-color: rgba(255, 30, 30, 0.2);
+}
+
+#time-mark-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+div#serial-reader {
+	width: 100%;
+	flex: 1;
+
+	display: flex;
+	overflow-y: auto;
+	flex-direction: column;
+
+	scroll-behavior: smooth;
+}
+
+.time-mark-hidden > div.serial-line > span.time-mark {
+	display: none !important;
+}
+
+/* Line filters */
+.only-marked > div.serial-line:not(.marked),
+.only-received > div.serial-line:not(.received),
+.only-sent > div.serial-line:not(.sent) {
+	display: none !important;
+}
+
+div.serial-line {
+	display: flex;
+	font-size: 11pt;
+	width: 100%;
+	height: max-content;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+div.serial-line:hover {
+	background-color: rgba(255, 255, 255, 0.025);
+}
+
+div.serial-line:active, div.serial-line.marked {
+	background-color: rgba(30, 143, 255, 0.2);
+}
+
+div.serial-line:first-child {
+	border-top: none;
+}
+
+div.serial-line:last-child {
+	margin-bottom: 10px;
+}
+
+div.serial-line > * {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+div.serial-line.sent > span.receive-mark,
+div.serial-line.received > span.send-mark {
+	display: none;
+}
+
+div.serial-line span.send-mark {
+	color: dodgerblue;
+	font-weight: bold;
+}
+
+div.serial-line span.receive-mark {
+	color: rgba(255, 255, 255, 0.2);
+}
+
+div.serial-line span {
+	padding: 5px;
+}
+
+div.serial-line span.time-mark {
+	padding-right: 0px;
+	color: rgba(30, 143, 255, 0.8);
+}
+
+div.serial-line p {
+	width: 100%;
+	padding: 5px;
+	padding-right: 15px;
+	user-select: text;
+	text-align: justify;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+
+div#serial-writer {
+	width: 100%;
+	height: max-content;
+	padding: 8px 16px;
+	
+	display: flex;
+	align-items: center;
+	
+	background-color: #212121;
+}
+
+div#serial-writer > * {
+	margin: 0 4px;
+	padding: 8px 14px;
+	border-radius: 100px;
+}
+
+div#serial-writer button {
+	width: max-content;
+}
+
+div#serial-writer.shadow {
+	box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.5);
+}
+
+input#serial-input {
+	flex: 1;
+}
+
+/* About dialog */
+
+#about-dialog .dialog-box {
+	display: flex;
+	flex-direction: column;
+
+	max-width: max-content;
+
+	gap: 5pt;
+}
+
+#about-dialog .dialog-box > h1 {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+#about-dialog .dialog-box > h1 > span {
+	font-size: 11pt;
+	color:rgba(255, 255, 255, 0.5);
+}
+
+#about-dialog .dialog-box > p {
+	display: flex;
+	align-items: center;
+}
+
+#about-dialog .dialog-box p:last-child {
+	margin-top: 10px;
+	font-size: 10pt;
+	color:rgba(255, 255, 255, 0.6);
+}
+
+/* Welcome message. */
+
+div.welcome-message {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	align-items: center;
+	justify-content: center;
+
+	opacity: 0.5;
+}
+
+div.welcome-image {
+	width: 100%;
+	height: 40%;
+	opacity: 0.4;
+	/*background-image: url('../img/computer guy.svg');*/
+	background-image: url('../img/icon.png');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+div.welcome-text {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+
+	align-items: center;
+}
+
+div.welcome-text > button#about {
+	padding: 6px 12px;
+	border-radius: 12px;
+}
+
+
+/* About dialog */
+
+#error-dialog .dialog-box {
+	background-color: rgb(44, 10, 10);
+	color: rgb(252, 167, 167);
+	padding-right: 64px;
+	width: max-content;
+}
+
+#error-dialog * {
+	color: rgb(252, 167, 167);
+}
+
+#error-dialog > *:not(h1) {
+	font-size: 11pt;
+}

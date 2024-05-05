@@ -1,0 +1,154 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', sans-serif;
+	color: white;
+	user-select: none;
+}
+
+body {
+	background-color: #101010;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/********************************************************************/
+/*                         Default elements                         */
+/********************************************************************/
+
+input[type="text"] {
+	background: none;
+	outline: none;
+	border: none;
+	background-color: #323232;
+}
+
+input[type="text"]::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"]:focus {
+	background-color: #141414;
+}
+
+select {
+	background-color: #323232;
+	color: rgba(255, 255, 255, 0.8);
+	border: none;
+	padding: 4px 12px;
+	border-radius: 100px;
+	outline: none;
+	padding-right: 24px !important;
+
+	appearance: none;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFFCC%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+}
+
+select:hover {
+	background-color: #434343;
+}
+
+select:active {
+	background-color: dodgerblue;
+}
+
+select:disabled,
+select:disabled:active,
+select:disabled:hover {
+	cursor: default;
+	color: gray !important;
+	background-color: #2A2A2A;
+}
+
+select > option {
+	border-radius: 10px;
+	background-color: #323232;
+}
+
+button {
+	background: none;
+	border: none;
+	background-color: #323232;
+}
+
+button:hover {
+	background-color: #434343;
+}
+
+button:active {
+	background-color: dodgerblue;
+}
+
+button:disabled {
+	cursor: default;
+	color: gray !important;
+	background-color: #2A2A2A;
+}
+
+button, select {
+	cursor: pointer;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+input[type="checkbox"]:hover {
+	background-color: rgba(255, 255, 255, 0.25);
+	border-color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="checkbox"]:active {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+input[type="checkbox"]:checked {
+	background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='dodgerblue' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+	background-color: rgba(30, 143, 255, 0.2);
+	border-color: dodgerblue;
+}
+
+input[type="checkbox"]:checked:hover {
+	background-color: rgba(30, 143, 255, 0.5);
+}
+
+input[type="checkbox"]:checked:active {
+	background-color: white;
+}
+
+::selection {
+	background-color: rgba(30, 143, 255, 0.2);
+	color: dodgerblue;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	position: fixed;
+}
+
+::-webkit-scrollbar-track {
+	background: #101010;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #434343;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+	background: dodgerblue;
+}

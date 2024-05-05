@@ -1,0 +1,145 @@
+/********************************************************************/
+/*                         Defined elements                         */
+/********************************************************************/
+
+.context-menu {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+
+	background-color: #212121;
+	border: 1px solid #323232;
+
+	width: max-content;
+	height: max-content;
+
+	padding: 5px;
+	border-radius: 5px;
+
+	font-size: 11pt;
+
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+
+	z-index: 10;
+}
+
+.context-menu .menu-separator {
+	margin: 2px 0;
+	height: 1px;
+	background-color: #cccccc4b;
+	border-radius: 1px;
+	width: 100%;
+}
+
+.context-menu .menu-option {
+	padding: 2px 15px;
+	margin-bottom: 2px;
+	border-radius: 5px;
+	color: #CCCCCC;
+}
+
+.context-menu .menu-option:hover {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.context-menu .menu-option:active {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.context-menu .menu-option.disabled {
+	color: #888888;
+}
+
+.context-menu .menu-option.disabled:hover {
+	background-color: transparent;
+}
+
+.context-menu .menu-option.disabled:active {
+	background-color: transparent;
+}
+
+.context-menu .menu-option:last-child {
+	margin-bottom: 0;
+}
+
+.dialog {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dialog .dialog-box {
+	background-color: #323232;
+	border-radius: 12px;
+	padding: 12px 24px 24px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 60%;
+
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dialog .dialog-box > button.close-button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	padding: 4px;
+
+	width: 24px;
+	aspect-ratio: 1 / 1;
+	border-radius: 12px;
+
+	background-image: url('../img/window-close.svg');
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	background-position: center;
+	background-size: contain;
+}
+
+.dialog .dialog-box h1 {
+	font-weight: normal;
+	font-size: 14pt;
+	margin-bottom: 14px;
+}
+
+.dialog .dialog-box > p {
+	font-size: 11pt;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.dialog-box > .info-row:not(:last-child) {
+	border-bottom: 1px solid #CCCCCC20;
+}
+
+/* Information rows */
+
+.info-row {
+	display: flex;
+	font-weight: lighter;
+	width: 100%;
+	justify-content: space-between;
+	padding: 4px 8px;
+}
+
+.info-row:hover {
+	background-color: #CCCCCC10;
+}
+
+.info-name {
+	color: #CCCCCCA0;
+	font-size: 11pt;
+}
+
+.info-value {
+	user-select: text;
+	color: #CCCCCC;
+	font-size: 11pt;
+}
+

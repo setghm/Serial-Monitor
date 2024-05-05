@@ -1,0 +1,24 @@
+{
+  "name": "serialmonitor",
+  "productName": "Serial Monitor",
+  "version": "1.0.0",
+  "description": "Open source Arduino serial monitor implementation.",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "keywords": [
+    "Arduino",
+    "Serial",
+    "Monitor",
+    "GUI"
+  ],
+  "author": "Set HM",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^22.3.27"
+  },
+  "dependencies": {
+    "serialport": "^11.0.0"
+  }
+}

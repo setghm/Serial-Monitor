@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+		<title>Serial Monitor</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+		<script defer src="js/app.js"></script>
+		<script defer src="js/device.js"></script>
+		<script defer src="js/reader.js"></script>
+		<script defer src="js/writer.js"></script>
+		<script defer src="js/error.js"></script>
+		<script defer src="js/context-menu.js"></script>
+	</head>
+	<body>
+		<div id="serial-info">
+			<div id="app-title"></div>
+			<div id="app-options">
+				<div class="port-options">
+					<!--button id="get-ports"></button-->
+					<button id="device-info" disabled></button>
+					<select id="port-select" name="port-select" disabled>
+						<option value="" selected disabled hidden>No devices</option>
+					</select>
+					<button id="device-disconnect" disabled>Connect</button>
+				</div>
+				<select id="baud-rate-select" name="baud-rate-select">
+					<option value="300">300 bauds</option>
+					<option value="1200">1200 bauds</option>
+					<option value="2400">2400 bauds</option>
+					<option value="4800">4800 bauds</option>
+					<option value="9600" selected>9600 bauds</option>
+					<option value="19200">19200 bauds</option>
+					<option value="38400">38400 bauds</option>
+					<option value="57600">57600 bauds</option>
+					<option value="74880">74880 bauds</option>
+					<option value="115200">115200 bauds</option>
+					<option value="230400">230400 bauds</option>
+					<option value="250000">250000 bauds</option>
+					<option value="500000">500000 bauds</option>
+					<option value="1000000">1000000 bauds</option>
+					<option value="2000000">2000000 bauds</option>
+				</select>
+				<div id="time-mark-div">
+					<input type="checkbox" name="time-mark" id="time-mark">
+					<label for="time-mark">Time mark</label>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Serial messages container -->
+		<div id="serial-reader" class="time-mark-hidden">
+			<!-- Welcome message -->
+			<div class="welcome-message">
+				<div class="welcome-image"></div>
+				<div class="welcome-text">
+					<p>Plug your device, then click "Connect" to start.</p>
+					<button id="about">About this app</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="serial-writer">
+			<input type="text" id="serial-input" placeholder="Type your message here" spellcheck="false">
+			<button id="serial-send" disabled>Send</button>
+			<!--button id="serial-send-line" disabled>Send Line</button-->
+			<select id="serial-line-end" name="serial-line-end">
+				<option value="crlf">CRLF</option>
+				<option value="lf">LF</option>
+				<option value="cr">CR</option>
+				<option value="none" selected>No newline</option>
+			</select>
+		</div>
+		
+		<div id="text-edit-menu" class="context-menu hidden">
+			<div class="menu-option">Copy</div>
+			<div class="menu-option">Cut</div>
+			<div class="menu-option">Paste</div>
+		</div>
+
+		<div id="line-menu" class="context-menu hidden">
+			<div class="menu-option">Copy line</div>
+			<div class="menu-option">Delete line</div>
+			<div class="menu-separator"></div>
+			<div class="menu-option">Highlight</div>
+			<div class="menu-option">Hide unhighlighted</div>
+			<div class="menu-separator"></div>
+			<div class="menu-option">Hide sent data</div>
+			<div class="menu-option">Hide received data</div>
+			<div class="menu-separator"></div>
+			<div class="menu-option">Clear all</div>
+		</div>
+
+		<div id="error-dialog" class="dialog hidden">
+			<div class="dialog-box">
+				<button class="close-button"></button>
+				<h1>Device error :(</h1>
+				<div class="error-description">Access denied</div>
+			</div>
+		</div>
+
+		<div id="information-dialog" class="dialog hidden">
+			<div class="dialog-box">
+				<button class="close-button"></button>
+				<h1>Device information</h1>
+				<div class="info-row" id="device-name">
+					<div class="info-name">Name:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-path">
+					<div class="info-name">Path:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-manufacturer">
+					<div class="info-name">Manufacturer:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-serialNumber">
+					<div class="info-name">Serial number:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-pnpId">
+					<div class="info-name">PNP ID:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-locationId">
+					<div class="info-name">Location ID:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-productId">
+					<div class="info-name">Product ID:</div>
+					<div class="info-value"></div>
+				</div>
+				<div class="info-row" id="device-vendorId">
+					<div class="info-name">Vendor ID:</div>
+					<div class="info-value"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="about-dialog" class="dialog hidden">
+			<div class="dialog-box">
+				<button class="close-button"></button>
+				<h1><object class="icon app-icon"></object> Serial Monitor <span>v1.0.0</span></h1>
+				<p>Send and receive serial messages between devices easly.</p>
+				<p>Powered by <object class="icon js-icon"></object><object class="icon electron-icon"></object>.</p>
+				<p>SetApps &#169; 2024.</p>
+			</div>
+		</div>
+
+		<template id="serial-line-template">
+			<div class="serial-line">
+				<span class="time-mark">asdf</span>
+				<span class="send-mark">&#8594;</span>
+				<span class="receive-mark">&#8592;</span>
+				<p></p>
+			</div>
+		</template>
+	</body>
+</html>

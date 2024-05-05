@@ -1,0 +1,29 @@
+.icon {
+    aspect-ratio: 1 / 1;
+
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.icon.app-icon {
+    width: 32px;
+    background-image: url('../img/icon.png');
+}
+
+.icon.js-icon,
+.icon.electron-icon {
+    width: 20px;
+}
+
+.icon.js-icon {
+    background-image: url('../img/js-icon.png');
+}
+
+.icon.electron-icon {
+    background-image: url('../img/electron-icon.png');
+}
