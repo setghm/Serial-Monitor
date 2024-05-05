@@ -5,7 +5,8 @@
   "description": "Open source Arduino serial monitor implementation.",
   "main": "main.js",
   "scripts": {
-    "test": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "keywords": [
     "Arduino",
@@ -16,9 +17,21 @@
   "author": "Set HM",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^22.3.27"
+    "electron": "22.0.0",
+    "electron-builder": "22.0.0"
   },
   "dependencies": {
     "serialport": "^11.0.0"
+  },
+  "build": {
+    "appId": "io.setapps.serialmonitor",
+    "files": "!build-assets${/*}",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "build-assets/icon.ico"
+    }
   }
 }
